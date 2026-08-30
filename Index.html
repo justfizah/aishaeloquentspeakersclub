@@ -81,6 +81,11 @@ section{padding:65px 6%}.dark{background:#17213b;color:#fff;text-align:center}.t
 <textarea id="note" rows="3" style="width:100%;padding:13px;margin:7px 0 18px;border:1px solid #ddd;border-radius:10px"></textarea>
 <button type="submit" class="btn" style="border:0;cursor:pointer">Submit Enrollment</button>
 </form>
+
+<div id="successMessage" style="display:none;max-width:650px;margin:20px auto;padding:15px;background:#d4edda;color:#155724;border:1px solid #c3e6cb;border-radius:10px;font-weight:bold;text-align:center;">
+Thank you for your enrollment!
+</div>
+
 <script>
 document.getElementById("enrolForm").addEventListener("submit", function(e){
 e.preventDefault();
@@ -98,7 +103,13 @@ Child’s Age: ${age}
 Program: ${program}
 Parent/Guardian Phone: ${phone}
 Additional Message: ${note || "None"}`;
+
+document.getElementById("successMessage").style.display = "block";
+this.reset();
+
+setTimeout(function(){
 window.location.href="https://wa.me/2347086008320?text="+encodeURIComponent(message);
+}, 1000);
 });
 </script>
 </section>
